@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "88842035246",
+    "firebase_url": "https://bluetoothcontrol-7ac34.firebaseio.com",
+    "project_id": "bluetoothcontrol-7ac34",
+    "storage_bucket": "bluetoothcontrol-7ac34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88842035246:android:b79c485971b6b291",
+        "android_client_info": {
+          "package_name": "com.example.android.bluetooth_control"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88842035246-5dq3r9qbkp6ios8bl94npqbf4mdobcjg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.bluetooth_control",
+            "certificate_hash": "7e6f5ca6d480e70a19e5f2ef8f4e21630fe0689b"
+          }
+        },
+        {
+          "client_id": "88842035246-j9di1prr7r69lpq8dv8r56can2arl5t7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgNw5BT9yz6doE-ZeYeUkTRUtPTokTZus"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88842035246-j9di1prr7r69lpq8dv8r56can2arl5t7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88842035246:android:533667f17512f67a",
+        "android_client_info": {
+          "package_name": "com.example.android.smart_home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88842035246-3p6n990ken3o9mcj025gvrppfk81bqut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.smart_home",
+            "certificate_hash": "7e6f5ca6d480e70a19e5f2ef8f4e21630fe0689b"
+          }
+        },
+        {
+          "client_id": "88842035246-j9di1prr7r69lpq8dv8r56can2arl5t7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgNw5BT9yz6doE-ZeYeUkTRUtPTokTZus"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88842035246-j9di1prr7r69lpq8dv8r56can2arl5t7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
