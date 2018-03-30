@@ -537,6 +537,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
                             if (mTimerRunning) {
                                 pauseTimer();
+                                startTimer();
                             } else {
                                 startTimer();
                             }
@@ -547,6 +548,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
                                 if (mTimerRunning) {
                                    pauseTimer();
+                                   startTimer();
                                 } else {
                                     startTimer();
                                 }
