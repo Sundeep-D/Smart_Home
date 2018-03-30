@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:background="@color/colorPrimaryDark"
+
+    android:layout_marginTop="1dp"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#30335e"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/alertback"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="60dp"/>
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sundeep D"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+
+            android:textSize="45sp"
+            android:layout_below="@id/userid"
+            android:textColor="#f2f0f0"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/userid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="329987DFSKFHGS"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#f2f0f0"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_below="@id/noofunitsconsumed"
+            android:id="@+id/noofunits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1150 Kwh"
+            android:layout_marginLeft="25dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#2c4b66"/>
+        <TextView
+            android:id="@+id/noofunitsconsumed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Units Consumed"
+            android:textSize="22sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_below="@id/noofunitssaved_textview"
+            android:id="@+id/noofunitssaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="350 Kwh"
+            android:layout_marginLeft="25dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#2c4b66"/>
+        <TextView
+            android:layout_below="@id/noofunits"
+            android:id="@+id/noofunitssaved_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Units Saved"
+            android:textSize="22sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#ffffff"/>
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="7"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textColor="#000"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Appliances"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/white"/>-->
+
+        <Button
+            android:id="@+id/btnok"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Dismiss"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="#252626"
+            android:layout_alignParentBottom="true"
+            android:onClick="dismiss"
+
+            android:layout_marginBottom="10dp"
+            android:textColorHighlight="#2352de"
+            android:layout_marginLeft="5dp"
+
+            android:textColor="#1c4784"/>
+
+        <Button
+            android:id="@+id/btnlogout"
+
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:layout_toRightOf="@id/btnok"
+            android:onClick="logout"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="#252626"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginBottom="10dp"
+            android:textColorHighlight="#2352de"
+            android:layout_width="300dp"
+            android:layout_marginRight="5dp"
+
+            android:textColor="#1c4784"/>
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

@@ -5,651 +5,898 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    tools:context="com.example.android.smart_home.Home_Dynamic_Display">
+    android:layout_height="match_parent">
     <ImageView
+        android:id="@+id/bc_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/back_smart3"
+
+        android:background="#f2efef"
         android:scaleType="centerCrop"
         />
 
 
-
-    <RelativeLayout
-        android:id="@+id/Main_Tab"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-
-
-        >
-        <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:src="@drawable/back_smart2"-->
-            <!--android:scaleType="centerCrop"-->
-            <!--/>-->
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="200dp"
-            android:layout_height="90dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="18dp"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
-            android:src="@drawable/home_logo" />
-
-        <TextView
-            android:id="@+id/splitter1"
-            android:layout_width="1dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="4dp"
-            android:layout_toRightOf="@id/logo"
-            android:background="#000000"
-            android:visibility="invisible" />
-
-        <TextView
-            android:id="@+id/home_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/home_user_name"
-            android:layout_alignStart="@+id/home_user_name"
-            android:layout_alignTop="@+id/logo"
-            android:text="Home ID"
-            android:textStyle="bold"
-            android:textColor="#bfc7c5"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/home_id_TV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/home_user_name_TV"
-            android:layout_alignStart="@+id/home_user_name_TV"
-            android:layout_below="@+id/home_id"
-            android:text="329987DFSKFHGS"
-            android:textColor="#bfc7c5"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/home_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/home_id_TV"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/splitter1"
-            android:text="Name"
-            android:textStyle="bold"
-            android:textColor="#bfc7c5"
-
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/home_user_name_TV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/home_user_name"
-            android:layout_marginLeft="33dp"
-            android:layout_toRightOf="@id/splitter1"
-            android:text="D.SUNDEEP"
-            android:textColor="#bfc7c5"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/splitter2"
-            android:layout_width="1dp"
-            android:layout_height="110dp"
-            android:layout_marginLeft="105dp"
-            android:layout_marginTop="4dp"
-            android:layout_toRightOf="@id/home_id_TV"
-            android:background="#000000"
-            android:visibility="invisible" />
-
-        <ImageView
-            android:id="@+id/wifi_image"
-            android:layout_width="70dp"
-            android:layout_height="135dp"
-            android:layout_alignTop="@+id/splitter2"
-            android:layout_marginLeft="45dp"
-            android:layout_marginStart="45dp"
-            android:layout_toEndOf="@+id/splitter2"
-            android:layout_toRightOf="@+id/splitter2"
-            android:onClick="zoomout"
-            android:src="@drawable/wifi_logo" />
-
-        <TextView
-            android:id="@+id/Network_status_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/Bluetooth_status_textView"
-            android:layout_alignBottom="@+id/Bluetooth_status_textView"
-            android:layout_alignLeft="@+id/textView3"
-            android:layout_alignStart="@+id/textView3"
-            android:text="Network"
-            android:textColor="#9E9E9E"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Network_status_textView"
-            android:layout_toEndOf="@+id/wifi_image"
-            android:layout_toRightOf="@+id/wifi_image"
-            android:text="Disabled"
-            android:textColor="#FF8A65"
-            android:textSize="25sp" />
-
-        <!--<TextView-->
-            <!--android:id="@+id/splitter3"-->
-            <!--android:layout_width="1dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginLeft="25dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:layout_toRightOf="@id/Network_status_textView"-->
-            <!--android:background="#000000" />-->
-
-        <ImageView
-            android:id="@+id/bluetooth_image"
-            android:layout_width="60dp"
-            android:layout_height="130dp"
-            android:layout_alignBottom="@+id/home_user_name_TV"
-            android:layout_toEndOf="@+id/textView3"
-            android:layout_toRightOf="@+id/textView3"
-            android:onClick="zoom"
-            android:src="@drawable/bluetooth_smart" />
-
-        <TextView
-            android:id="@+id/Bluetooth_status_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/home_id_TV"
-            android:layout_alignBottom="@+id/home_id_TV"
-            android:layout_toEndOf="@+id/bluetooth_image"
-            android:layout_toRightOf="@+id/bluetooth_image"
-            android:text="Bluetooth"
-            android:textColor="#9E9E9E"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Bluetooth_status_textView"
-            android:layout_toEndOf="@+id/bluetooth_image"
-            android:layout_toRightOf="@+id/bluetooth_image"
-            android:text="Enabled"
-            android:textColor="#FF8A65"
-            android:textSize="25sp" />
-
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_below="@id/Main_Tab"
-
-        android:layout_alignParentRight="true">
-
-        <TextView
-            android:id="@+id/units_Consumed_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:text="Units Consumed"
-            android:textColor="#ffffff"
-            android:textSize="26sp"
-            android:paddingLeft="10dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/units_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/units_Consumed_tv"
-            android:textSize="40sp"
-            android:text="420 Kwh"
-            android:textStyle="bold"
-            android:textColor="#DD2C00"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="45dp" />
-
-        <ImageView
-            android:id="@+id/up_arrow"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignLeft="@+id/units_Consumed_tv"
-            android:layout_alignStart="@+id/units_Consumed_tv"
-            android:layout_alignTop="@+id/down_arrow"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"
-            android:src="@drawable/up" />
-
-        <ImageView
-            android:id="@+id/down_arrow"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_toRightOf="@id/up_arrow"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="25dp"
-            android:layout_below="@id/units_tv"
-            android:src="@drawable/down" />
-
-        <TextView
-            android:id="@+id/up_arrow_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/up_arrow"
-            android:text="230 V"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:textColor="#9E9E9E"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="35dp"/>
-
-        <TextView
-            android:id="@+id/down_arrow_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/up_arrow_value"
-            android:layout_alignBottom="@+id/up_arrow_value"
-            android:layout_alignLeft="@+id/down_arrow"
-            android:layout_alignStart="@+id/down_arrow"
-            android:text="230 V"
-            android:textColor="#9E9E9E"
-            android:textSize="25dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/energy_saving_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/units_Consumed_tv"
-            android:layout_alignStart="@+id/units_Consumed_tv"
-            android:layout_below="@+id/up_arrow_value"
-            android:layout_marginTop="27dp"
-            android:text="Energy saver"
-            android:textColor="#76FF03"
-            android:textSize="23sp"
-            android:textStyle="bold" />
-
-        <ToggleButton
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_alignBaseline="@+id/energy_saving_tv"
-            android:layout_alignBottom="@+id/energy_saving_tv"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/energy_saving_tv"
-            android:id="@+id/toggleButton" />
-
-
-        <TextView
-            android:id="@+id/out_sation_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toggleButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:text="Out Station Mode"
-            android:textColor="#ecbb96"
-            android:textSize="23sp"
-            android:textStyle="bold" />
-
-        <ToggleButton
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_alignEnd="@+id/units_tv"
-            android:layout_alignRight="@+id/units_tv"
-            android:layout_below="@+id/out_sation_mode"
-            android:layout_marginTop="14dp" />
-
-
-
-
-    </RelativeLayout>
-
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_below="@+id/Main_Tab"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/user" />
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/statistics"
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
+        android:scaleType="fitStart"
+
+
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="14dp"
+
+        android:src="@drawable/sihlogo" />
+
+    <TextView
+        android:id="@+id/splitter1"
+        android:layout_width="1dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/logo"
+        android:background="#393434"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/home_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/home_user_name"
+        android:layout_alignStart="@+id/home_user_name"
+        android:layout_alignTop="@+id/logo"
+        android:text="Home ID"
+        android:textStyle="bold"
+        android:textColor="#3e4342"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/home_id_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/home_user_name_TV"
+        android:layout_alignStart="@+id/home_user_name_TV"
+        android:layout_below="@+id/home_id"
+        android:text="329987DFSKFHGS"
+        android:textColor="#283750"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/home_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_id_TV"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="240dp"
-        android:id="@+id/imageView" />
+        android:layout_toRightOf="@id/splitter1"
+        android:text="Name"
+        android:textStyle="bold"
+        android:textColor="#3e4342"
+
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/home_user_name_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_user_name"
+        android:layout_marginLeft="33dp"
+        android:layout_toRightOf="@id/splitter1"
+        android:text="D.SUNDEEP"
+        android:textColor="#283750"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/splitter2"
+        android:layout_width="1dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/home_id_TV"
+        android:background="#000000"
+        android:visibility="invisible" />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/wifi_image"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="135dp"-->
+        <!--android:layout_alignTop="@+id/splitter2"-->
+        <!--android:layout_marginLeft="45dp"-->
+        <!--android:layout_marginStart="45dp"-->
+        <!--android:layout_toEndOf="@+id/splitter2"-->
+        <!--android:layout_toRightOf="@+id/splitter2"-->
+        <!--android:onClick="zoomout"-->
+        <!--android:src="@drawable/wifi_logo" />-->
+
+
+    <com.airbnb.lottie.LottieAnimationView
+
+        android:id="@+id/wifi_image"
+        android:layout_width="50dp"
+        android:layout_height="105dp"
+
+
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/splitter2"
+        android:layout_toRightOf="@+id/splitter2"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="wifi.json"
+        app:lottie_loop="true" />
+
+
+    <TextView
+        android:id="@+id/Network_status_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/home_id"
+        android:layout_toRightOf="@+id/wifi_image"
+        android:layout_marginLeft="10dp"
+
+        android:text="Network"
+        android:textColor="#073a64"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/Network_status_textView"
+        android:layout_alignRight="@+id/Network_status_textView"
+        android:layout_below="@+id/Network_status_textView"
+        android:text="Disabled"
+        android:textColor="#FF8A65"
+        android:textSize="25sp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+
+        android:id="@+id/upload_download"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+
+        android:layout_below="@id/textView"
+        android:layout_toRightOf="@id/aplliances"
+
+        android:layout_marginTop="50dp"
+
+
+        android:layout_marginLeft="100dp"
+
+
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="sort.json"
+        app:lottie_loop="true" />
+
+    <TextView
+    android:id="@+id/income"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:text="Incoming\nVoltage"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/textView"
+        android:layout_toRightOf="@id/aplliances"
+
+
+     />
+
+    <TextView
+        android:id="@+id/upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Outgoing\nVoltage"
+        android:textAlignment="center"
+        android:textSize="16sp"
+
+        android:layout_marginLeft="170dp"
+
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/textView"
+        android:layout_toRightOf="@id/aplliances"
+
+
+        />
+
+
+    <TextView
+        android:id="@+id/incomeVoltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="210 V"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/textView"
+        android:layout_toRightOf="@id/aplliances"/>
+
+    <TextView
+        android:id="@+id/outgoingVoltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="210 V"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="101dp"
+        android:layout_marginLeft="170dp"
+        android:layout_below="@id/textView"
+        android:layout_toRightOf="@id/aplliances"/>
+
+
+
+    <!--<ImageView-->
+        <!--android:id="@+id/bluetooth_image"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="130dp"-->
+        <!--android:layout_alignBottom="@+id/home_user_name_TV"-->
+        <!--android:layout_toEndOf="@+id/textView3"-->
+        <!--android:layout_toRightOf="@+id/textView3"-->
+
+        <!--android:src="@drawable/bluetooth_smart" />-->
+
+    <com.airbnb.lottie.LottieAnimationView
+
+
+        android:id="@+id/bluetooth_image"
+        android:layout_width="60dp"
+        android:layout_height="130dp"
+        android:layout_alignBottom="@+id/logo"
+
+      android:layout_toRightOf="@id/wifi_image"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="bluetooth.json"
+        android:layout_marginLeft="130dp"
+        app:lottie_loop="true">
+
+    </com.airbnb.lottie.LottieAnimationView>
+
+
+        <!--/>-->
+
+
+    <TextView
+        android:id="@+id/Bluetooth_status_textView"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_toRightOf="@+id/wifi_image"
+        android:layout_marginLeft="200dp"
+
+        android:text="Bluetooth"
+        android:textColor="#073a64"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_toRightOf="@+id/wifi_image"
+        android:layout_marginTop="1dp"
+
+        android:layout_below="@+id/Bluetooth_status_textView"
+        android:text="Enabled"
+        android:textColor="#FF8A65"
+        android:textSize="25sp" />
+
+
+    <!--</RelativeLayout>-->
+
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="240dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!---->
+    <!---->
+
+    <!--android:layout_alignParentRight="true">-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/units_Consumed_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="30dp"-->
+
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginTop="160dp"-->
+        <!--android:text="Units Consumed"-->
+        <!--android:textColor="#000"-->
+        <!--android:textSize="26sp"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/units_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/units_Consumed_tv"-->
+        <!--android:textSize="40sp"-->
+        <!--android:text="420 Kwh"-->
+        <!--android:layout_marginRight="60dp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="#DD2C00"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginLeft="45dp" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/up_arrow"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_alignLeft="@+id/units_Consumed_tv"-->
+        <!--android:layout_alignStart="@+id/units_Consumed_tv"-->
+        <!--android:layout_alignTop="@+id/down_arrow"-->
+        <!--android:layout_marginLeft="18dp"-->
+        <!--android:layout_marginStart="18dp"-->
+        <!--android:src="@drawable/up" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/down_arrow"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_toRightOf="@id/up_arrow"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:layout_marginLeft="25dp"-->
+        <!--android:layout_below="@id/units_tv"-->
+        <!--android:src="@drawable/down" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/up_arrow_value"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/up_arrow"-->
+        <!--android:text="230 V"-->
+        <!--android:textSize="25dp"-->
+
+        <!--android:layout_marginRight="140dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="#9E9E9E"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginLeft="35dp"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/down_arrow_value"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/up_arrow_value"-->
+        <!--android:layout_alignBottom="@+id/up_arrow_value"-->
+        <!--android:layout_alignLeft="@+id/down_arrow"-->
+        <!--android:layout_alignStart="@+id/down_arrow"-->
+        <!--android:text="230 V"-->
+        <!--android:textColor="#9E9E9E"-->
+        <!--android:textSize="25dp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/energy_saving_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignLeft="@+id/units_Consumed_tv"-->
+        <!--android:layout_alignStart="@+id/units_Consumed_tv"-->
+        <!--android:layout_below="@+id/up_arrow_value"-->
+        <!--android:layout_marginTop="27dp"-->
+        <!--android:text="Energy saver"-->
+        <!--android:textColor="#76FF03"-->
+        <!--android:textSize="23sp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<ToggleButton-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignBaseline="@+id/energy_saving_tv"-->
+        <!--android:layout_alignBottom="@+id/energy_saving_tv"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_toRightOf="@id/energy_saving_tv"-->
+        <!--android:id="@+id/toggleButton" />-->
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/out_sation_mode"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/toggleButton"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="25dp"-->
+        <!--android:text="Out Station Mode"-->
+        <!--android:textColor="#ecbb96"-->
+        <!--android:textSize="23sp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<ToggleButton-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignEnd="@+id/units_tv"-->
+        <!--android:layout_alignRight="@+id/units_tv"-->
+        <!--android:layout_below="@+id/out_sation_mode"-->
+        <!--android:layout_marginTop="14dp" />-->
+
+
+
+
+    <!--</RelativeLayout>-->
+
+    <android.support.v7.widget.CardView
+        android:layout_width="70dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="20dp"
+
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f2efef"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/analysis"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="110dp"
+            android:id="@+id/imageView" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+
+            android:layout_marginTop="40dp"
+            android:onClick="ShowPopup"
+            android:src="@drawable/acc" />
+
+
+    </android.support.v7.widget.CardView>
+
+
 
     <RelativeLayout
         android:layout_width="640dp"
         android:layout_height="match_parent"
-        android:layout_below="@+id/Main_Tab"
+        android:layout_marginTop="120dp"
+
+
 
         android:layout_marginLeft="70dp">
         <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:src="@drawable/back_smart2"-->
-            <!--android:scaleType="centerCrop"-->
-            <!--/>-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:src="@drawable/back_smart2"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--/>-->
 
     </RelativeLayout>
 
 
     <ScrollView
         android:id="@+id/aplliances"
-        android:layout_width="650dp"
+        android:layout_width="645dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="60dp"
-        android:layout_below="@id/Main_Tab">
+        android:layout_marginTop="120dp"
+        android:background="#fff"
 
-
-    <RelativeLayout
-        android:id="@+id/Appliance_details"
-        android:layout_width="650dp"
-        android:layout_height="400dp"
-        android:layout_below="@id/Main_Tab"
-        android:visibility="visible"
-        android:layout_alignParentLeft="true"
         >
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/water_heater"
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-            android:layout_width="300dp"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp">
 
-            <LinearLayout
-                android:id="@+id/water_heater_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <RelativeLayout
+            android:id="@+id/Appliance_details"
+            android:layout_width="650dp"
+            android:layout_height="400dp"
 
-                android:background="#ffffff"
-                android:orientation="horizontal">
+
+            android:visibility="visible"
+            android:layout_alignParentLeft="true"
+            >
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/water_heater"
+                android:layout_width="300dp"
+                android:layout_height="140dp"
+                card_view:cardBackgroundColor="#33197e"
+
+
+
+
+
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:id="@+id/water_heater_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:background="#ffffff"
 
+                    android:orientation="horizontal">
+                    <!--<VideoView-->
+                        <!--android:id="@+id/water_heater_video_view"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:visibility="invisible"-->
+                        <!--/>-->
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Water Heater"
+                            android:textColor="#000"
+
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="16sp"
+                            />
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="5dp"
+                            android:src="@drawable/heater1"
+                            android:layout_marginTop="10dp"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/timer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Timer : 30.00"
+
+                                android:layout_marginTop="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="18sp"
+
+
+                                />
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="right|end"
+
+                                android:layout_marginLeft="35dp"
+                                android:src="@drawable/ecologo"
+                                android:layout_marginTop="1dp"
+                                />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hot water is getting ready."
+
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="14sp"
+
+                            android:layout_gravity="center_horizontal"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="20dp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:scaleType="centerCrop"
+                                android:layout_height="40dp"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="10dp"
+                                android:src="@drawable/temp"
+                                android:layout_marginTop="1dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="120°"
+                                android:textColor="#2c309b"
+
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="28sp"
+                                android:textAlignment="textEnd"
+                                android:layout_gravity="end"
+                                />
+
+
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/iron_box"
+
+
+                android:layout_toRightOf="@id/water_heater"
+                android:layout_width="150dp"
+                android:layout_height="140dp"
+                android:background="#004D40"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                card_view:cardBackgroundColor="#33197e"
+                >
+
+                <LinearLayout
+                    android:id="@+id/iron_box_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ef4343"
+                    android:layout_margin="3dp"
+
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Iron Box"
+
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="#000"
+                            android:layout_gravity="left"
+
+                            android:textSize="16sp"
+                            />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="right"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ecologo"
+                            android:layout_marginTop="1dp"
+                            />
+
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="65dp"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center_horizontal"
+
+                        android:src="@drawable/ironbox"
+                        android:layout_marginTop="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/timeDiff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Used Duration : 59 Seconds"
+
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#000"
+                        android:layout_gravity="left"
+
+                        android:textSize="11sp"
+                        />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_marginTop="5dp"
+                android:id="@+id/bedroom_light"
+                android:layout_width="200dp"
+                android:layout_height="140dp"
+                android:background="#004D40"
+                android:layout_marginLeft="20dp"
+                card_view:cardBackgroundColor="#33197e"
+
+                android:layout_below="@id/water_heater"
+                >
+                <LinearLayout
+                    android:id="@+id/beedroom_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bulb"
+                        android:layout_marginTop="10dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bedroom Light"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/outside_light"
+
+
+                android:layout_width="150dp"
+                android:layout_height="140dp"
+                android:background="#004D40"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iron_box"
+                android:layout_marginTop="10dp"
+                card_view:cardBackgroundColor="#33197e"
+                >
+                <LinearLayout
+                    android:id="@+id/outside_light_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ef4343"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Outside Light"
+                        android:textColor="#000"
+                        android:layout_marginTop="6dp"
+                        android:layout_gravity="center"
+
+                        android:textSize="16sp"
+                        />
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/out"
+                        android:layout_marginTop="18dp"
+                        />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/water_motor"
+                android:layout_toRightOf="@id/bedroom_light"
+                android:layout_width="250dp"
+                android:layout_below="@+id/iron_box"
+                android:layout_height="140dp"
+                android:background="#004D40"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                card_view:cardBackgroundColor="#33197e"
+
+                >
+                <LinearLayout
+                    android:id="@+id/water_motor_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="3dp"
+                    android:background="#ffffff">
                     <ImageView
                         android:layout_width="120dp"
                         android:layout_height="80dp"
                         android:layout_marginLeft="25dp"
-                        android:src="@drawable/water_heater"
+                        android:src="@drawable/motor"
                         android:layout_marginTop="10dp"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Water Heater"
+                        android:text="Water motor"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="20dp"
                         android:textSize="22sp"
                         />
-
-
-
                 </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/bedroom_fan"
+                android:layout_marginTop="5dp"
+                card_view:cardBackgroundColor="#33197e"
+
+                android:layout_width="150dp"
+                android:layout_toRightOf="@+id/water_motor"
+                android:layout_below="@id/outside_light"
+                android:layout_height="140dp"
+                android:background="#004D40"
+                android:layout_marginLeft="5dp"
+                >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:id="@+id/beedroom_fan_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="right"
-                        android:layout_marginLeft="25dp"
-                        android:src="@drawable/ecologo"
-                        android:layout_marginTop="1dp"
-                        />
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/fan" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Hot water is getting ready."
-
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="15dp"
-                        android:textSize="16sp"
-                        android:textAlignment="textEnd"
-                        android:layout_gravity="end"
+                        android:text="Bedroom Fan"
+                        android:textStyle="bold"
+                        android:layout_marginTop="6dp"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="21sp"
                         />
-
-
 
                 </LinearLayout>
+            </android.support.v7.widget.CardView>
 
 
-
-
-            </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/iron_box"
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-            android:layout_toRightOf="@id/water_heater"
-            android:layout_width="150dp"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            >
-
-            <LinearLayout
-                android:id="@+id/iron_box_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/iron_box"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Iron Box"
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_marginTop="10dp"
-            android:id="@+id/bedroom_light"
-            android:layout_width="200dp"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginLeft="20dp"
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-            android:layout_below="@id/water_heater"
-            >
-            <LinearLayout
-                android:id="@+id/beedroom_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/bulb"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Bedroom Light"
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/outside_light"
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-
-            android:layout_width="150dp"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iron_box"
-            android:layout_marginTop="10dp"
-            >
-            <LinearLayout
-                android:id="@+id/outside_light_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/out_light"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Outside Light"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/water_motor"
-            android:layout_toRightOf="@id/bedroom_light"
-            android:layout_width="250dp"
-            android:layout_below="@+id/iron_box"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-            >
-            <LinearLayout
-                android:id="@+id/water_motor_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="#ffffff">
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="25dp"
-                    android:src="@drawable/motor"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Water motor"
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="22sp"
-                    />
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/bedroom_fan"
-            android:layout_marginTop="10dp"
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-
-            android:layout_width="150dp"
-            android:layout_toRightOf="@+id/water_motor"
-            android:layout_below="@id/outside_light"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginLeft="10dp"
-            >
-
-            <LinearLayout
-                android:id="@+id/beedroom_fan_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/fan" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Bedroom Fan"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-
-        <!--<android.support.v7.widget.CardView-->
+            <!--<android.support.v7.widget.CardView-->
             <!--card_view:cardCornerRadius="10dp"-->
             <!--card_view:contentPadding="2dp"-->
             <!--android:layout_marginTop="10dp"-->
@@ -665,190 +912,197 @@
             <!--&gt;-->
 
             <!--<LinearLayout-->
-                <!--android:id="@+id/mixer_lay"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:orientation="vertical">-->
-                <!--<ImageView-->
-                    <!--android:layout_width="120dp"-->
-                    <!--android:layout_height="90dp"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:src="@drawable/mixer"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--/>-->
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Mixer"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:textSize="25sp"-->
-                    <!--/>-->
+            <!--android:id="@+id/mixer_lay"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<ImageView-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="90dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@drawable/mixer"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--/>-->
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Mixer"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textSize="25sp"-->
+            <!--/>-->
 
             <!--</LinearLayout>-->
-        <!--</android.support.v7.widget.CardView>-->
+            <!--</android.support.v7.widget.CardView>-->
 
-        <android.support.v7.widget.CardView
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/washing_machine"
-            android:layout_marginLeft="20dp"
-            android:layout_width="160dp"
+            <android.support.v7.widget.CardView
 
-            android:layout_height="140dp"
-            android:background="#004D40"
+                android:layout_marginTop="5dp"
+                android:id="@+id/washing_machine"
+                android:layout_marginLeft="20dp"
+                android:layout_width="160dp"
 
-            android:layout_below="@id/bedroom_light">
+                android:layout_height="140dp"
 
-            <LinearLayout
-                android:id="@+id/washing_machine_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/washing_machine"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Washing Machine"
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
+                card_view:cardBackgroundColor="#33197e"
 
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+                android:layout_below="@id/bedroom_light">
 
-
-
-        <android.support.v7.widget.CardView
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-            android:id="@+id/human_detector"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/washing_machine"
-            android:layout_width="330dp"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/water_motor"
-            >
-
-            <LinearLayout
-                android:id="@+id/human_detector_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/washing_machine_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_margin="3dp"
                     android:orientation="vertical">
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_gravity="left"
-                        android:src="@drawable/human_detector"
-                        android:layout_marginTop="10dp"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Human Detector"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"
-                        android:textSize="22sp"
-                        android:paddingLeft="5dp"
-                        />
-
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
-
-                    <TextView
-                        android:id="@+id/human_detector_present_absent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="A B S E N T"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"
-                        android:textSize="20sp"
-
-                        android:paddingLeft="5dp"
-                        />
-
-                    <TextView
                         android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/washing_machine"
                         android:layout_marginTop="10dp"
-                        android:text="Lights and fans will be turned off automatically within certain time"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Washing Machine"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
                         />
 
                 </LinearLayout>
+            </android.support.v7.widget.CardView>
 
 
 
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            card_view:cardCornerRadius="10dp"
-            card_view:contentPadding="2dp"
-            android:id="@+id/nightmode"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/human_detector"
-            android:layout_width="110dp"
-            android:layout_below="@id/water_motor"
-            android:layout_height="140dp"
-            android:background="#004D40"
-            android:layout_marginLeft="10dp"
+            <android.support.v7.widget.CardView
+                card_view:cardBackgroundColor="#33197e"
+                android:id="@+id/human_detector"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/washing_machine"
+                android:layout_width="330dp"
+                android:layout_height="140dp"
+                android:background="#004D40"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/water_motor"
+                >
 
-            >
-
-            <LinearLayout
-                android:id="@+id/nightmode_lay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/night1"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
+                <LinearLayout
+                    android:id="@+id/human_detector_lay"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Night Mode"
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    />
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="left"
+                            android:src="@drawable/human_detector"
+                            android:layout_marginTop="10dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Human Detector"
+                            android:textStyle="bold"
+                            android:layout_marginTop="5dp"
+                            android:textSize="22sp"
+                            android:paddingLeft="5dp"
+                            />
 
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
+
+                        <TextView
+                            android:id="@+id/human_detector_present_absent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="A B S E N T"
+                            android:textStyle="bold"
+                            android:layout_marginTop="5dp"
+                            android:textSize="20sp"
+
+                            android:paddingLeft="5dp"
+                            />
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_marginTop="10dp"
+                            android:text="Lights and fans will be turned off automatically within certain time"
+                            />
+
+                    </LinearLayout>
 
 
 
-    </RelativeLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                card_view:cardBackgroundColor="#33197e"
+                android:id="@+id/nightmode"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/human_detector"
+                android:layout_width="110dp"
+                android:layout_below="@id/water_motor"
+                android:layout_height="140dp"
+                android:background="#004D40"
+                android:layout_marginLeft="5dp"
+
+                >
+
+                <LinearLayout
+                    android:id="@+id/nightmode_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/night1"
+                        android:layout_marginTop="10dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Night Mode"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+        </RelativeLayout>
     </ScrollView>
 
 
 </RelativeLayout>
+
+
+
