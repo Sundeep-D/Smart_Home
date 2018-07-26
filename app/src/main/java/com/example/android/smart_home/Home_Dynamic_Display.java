@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -38,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.VideoView;
+import android.widget.ViewFlipper;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
@@ -45,6 +47,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ntt.customgaugeview.library.GaugeView;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,6 +59,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Random;
 import java.util.UUID;
 
 public class Home_Dynamic_Display extends AppCompatActivity {
@@ -72,9 +78,13 @@ public class Home_Dynamic_Display extends AppCompatActivity {
     DatabaseReference database_reference;
     ArrayList<String> device_status=new ArrayList<String >();
     ArrayList<String> ecomode_status=new ArrayList<String >();
-    ArrayList<String> avg_time=new ArrayList<String >();
+    ArrayList<String> usr_details=new ArrayList<String >();
+    ArrayList<String> Door_status=new ArrayList<String >();
+    ArrayList<String> sensor_status=new ArrayList<String >();
+//    ArrayList<String> water_heater_timer=new ArrayList<String >();
+//    ArrayList<String> water_=new ArrayList<String >();
     CardView water_heater_card,iron_box_card,bedroom_light_card,human_detector_card,bedroom_fan_card,outside_light_card,washingmachine_card,watermotor_card,nightmode_card;
-    TextView human_detector_present_absent,timeDiff;
+    TextView human_detector_present_absent,timeDiff,timeDiff1,timeDiff2;
     Dialog myDialog;
     public static ProgressDialog mprogress;
     String cmd;
@@ -90,8 +100,11 @@ public class Home_Dynamic_Display extends AppCompatActivity {
     TextView enable;
     LottieAnimationView wifi;
 
+    TextView id,usrname;
+
     private static final long START_TIME_IN_MILLIS = 10000;
     private TextView mTextViewCountDown;
+
     private Button mButtonStartPause;
     private Button mButtonReset;
     private CountDownTimer mCountDownTimer;
@@ -107,13 +120,46 @@ public class Home_Dynamic_Display extends AppCompatActivity {
     private long mTimeLeftInMillis1 = START_TIME_IN_MILLIS1;
 
 
-    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+    private static final long START_TIME_IN_MILLIS2 = 10000;
+    private TextView mTextViewCountDown2;
+    private Button mButtonStartPause2;
+    private Button mButtonReset2;
+    private CountDownTimer mCountDownTimer2;
+    private boolean mTimerRunning2;
+    private long mTimeLeftInMillis2 = START_TIME_IN_MILLIS2;
 
+    TextView doorstatus_textview;
+
+
+    ImageView water_heater_eco,water_motor_eco,bedroom_light_eco,bedroom_fan_eco;
+
+
+    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+//ironbox
     int t1hours, t1mins, t1day, t1secs, t2hours, t2mins, t2day, t2secs;
     int seconds;
 
+//water_heater
+    int t1hours1, t1mins1, t1day1, t1secs1, t2hours1, t2mins1, t2day1, t2secs1;
+    int seconds1;
+//water_motor
+    int t1hours2, t1mins2, t1day2, t1secs2, t2hours2, t2mins2, t2day2, t2secs2;
+    int seconds2;
+
+
     long avg_time_count;
     long avg_time_total=0;
+    String time="10000";
+
+    CountDownTimer count;
+    TextView t1,t2;
+    Random rand = new Random();
+    int[] values1 = {233,224,221,236,228,239,222,237,226,235,229,232,231,223};
+    int[] values2 = {230,221,218,232,225,237,220,233,224,232,226,230,228,221};
+
+    ViewFlipper vf;
+    ImageView door_imageview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +172,69 @@ public class Home_Dynamic_Display extends AppCompatActivity {
         setContentView(R.layout.activity_home__dynamic__display);
 
 
+        //**********************************flipeer*****************************
+
+        int image[]={R.drawable.aa,R.drawable.b,R.drawable.cc,R.drawable.d,R.drawable.e,R.drawable.f,R.drawable.i};
+        vf=(ViewFlipper) findViewById(R.id.flipper);
+
+        for(int i:image)
+        {
+            flipper(i);
+        }
+
+
+        //**********************************flipeer*****************************
+
+
+
+        //**************************speedometer******************************
+        final GaugeView gaugeView = (GaugeView) findViewById(R.id.gauge_view);
+
+        gaugeView.setShowRangeValues(true);
+        gaugeView.setTargetValue(0);
+
+
+
+        ImageView imm=(ImageView)findViewById(R.id.log);
+        imm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent i = new Intent(Home_Dynamic_Display.this,LogActivity.class);
+                startActivity(i);
+
+                //Toast.makeText(Home_Dynamic_Display.this,"Clicked",Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+        //**************************speedometer******************************
+
+
+        t1 = (TextView) findViewById(R.id.incomeVoltage);
+        t2 = (TextView) findViewById(R.id.outgoingVoltage);
+
+        count = new CountDownTimer(14000,1500) {
+            @Override
+            public void onTick(long l) {
+                int index = rand.nextInt(14);
+                gaugeView.setTargetValue(values1[index]);
+                t1.setText(String.valueOf(values1[index]));
+                t2.setText(String.valueOf(values2[index]));
+            }
+
+            @Override
+            public void onFinish() {
+                this.start();
+            }
+        }.start();
+
+
+
+
+        door_imageview=(ImageView)findViewById(R.id.door_imageview) ;
 
 
 
@@ -143,11 +252,6 @@ public class Home_Dynamic_Display extends AppCompatActivity {
             wifi.setVisibility(View.INVISIBLE);
 
         }
-
-
-
-
-
 
         try {
             db = openOrCreateDatabase("REGISTRATION_STATUS", Context.MODE_PRIVATE, null);
@@ -211,6 +315,13 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 //        final VideoView videoView = (VideoView)findViewById(R.id.bc_video);
 
 
+        id=(TextView)findViewById(R.id.home_id_TV);
+        usrname=(TextView)findViewById(R.id.home_user_name_TV);
+
+        water_heater_eco=(ImageView)findViewById(R.id.water_heater_eco);
+        water_motor_eco=(ImageView)findViewById(R.id.water_motor_eco);
+        bedroom_light_eco=(ImageView)findViewById(R.id.bedroom_light_eco);
+        bedroom_fan_eco=(ImageView)findViewById(R.id.bedroom_fan_eco);
 
         washingmachine_lay=(LinearLayout)findViewById(R.id.washing_machine_lay);
         water_heater_lay=(LinearLayout)findViewById(R.id.water_heater_lay);
@@ -224,6 +335,9 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
         appliances=(ScrollView)findViewById(R.id.aplliances);
         mTextViewCountDown = findViewById(R.id.timer);
+        mTextViewCountDown1 = findViewById(R.id.water_motor_timer);
+        mTextViewCountDown2 = findViewById(R.id.human_timer);
+
 
         washingmachine_card=(CardView)findViewById(R.id.washing_machine);
         outside_light_card=(CardView)findViewById(R.id.outside_light);
@@ -237,6 +351,8 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
         human_detector_present_absent=(TextView)findViewById(R.id.human_detector_present_absent);
         timeDiff=(TextView)findViewById(R.id.timeDiff);
+        timeDiff1=(TextView)findViewById(R.id.heater_duration);
+        timeDiff2=(TextView)findViewById(R.id.motor_duration);
 
 
         myDialog = new Dialog(this);
@@ -255,28 +371,147 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
 
 
-//        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("IRON BOX AVG TIME");
-//        database_reference.addValueEventListener(new ValueEventListener(){
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("USER DETAILS");
+        database_reference.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren())
+                {
+                    String usrs=child.getValue(String.class);
+//                    usr_details.clear();
+                    usr_details.add(usrs);
+                  //  Toast.makeText(getApplicationContext(),usrs,Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+                }
+
+                id.setText(passcode_pass);
+                usrname.setText(usr_details.get(4).toUpperCase());
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+                database_reference= FirebaseDatabase.getInstance().getReference("SENSORS").child("LDR-PIR");
+        database_reference.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren())
+                {
+                    String usrs=child.getValue(String.class);
+                    sensor_status.clear();
+                    sensor_status.add(usrs);
+
+                    String[] check=usrs.split("_");
+
+                    if (check[0].equals("ldr"))
+                    {
+                        if (check[1].equals("true"))
+                        {
+
+                            darkness_detected();
+                        }
+                        else
+                        {
+                            no_darkness();
+                        }
+                    }else if(check[0].equals("pir"))
+                    {
+                        if (check[1].equals("true"))
+                        {
+
+                            motion_detected();
+                        }
+                        else
+                        {
+                            no_human_detected();
+
+                        }
+                    }
+                    else if(check[0].equals("door"))
+                    {
+                        if (check[1].equals("true"))
+                        {
+
+                            door_auth_true();
+                        }
+                        else
+                        {
+                            door_auth_false();
+
+                        }
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+//
+
+        doorstatus_textview=(TextView)findViewById(R.id.door_status) ;
+//        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DOOR STATUS");
+//        database_reference.child("STATUS").setValue("true");
+//        database_reference.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot child : dataSnapshot.getChildren())
+//                for (DataSnapshot child:dataSnapshot.getChildren() )
 //                {
+//
+//
+//
 //                    String usrs=child.getValue(String.class);
-//                    avg_time.clear();
-//                    avg_time.add(usrs);
-//                    avg_time_count=dataSnapshot.getChildrenCount();
+//                    Door_status.clear();
+//                    Door_status.add(usrs);
 //
+//                    //****************************
+////                    if(usrs.equals("true"))
+////                    {
+////                        door_auth_true();
+////                    }
+////                    else if(usrs.equals("false"))
+////                    {
+////                        door_auth_false();
+////                    }
 //
-//
-//
+//                    //***************************
 //
 //                }
-////                for (int i=0;i<avg_time_count;i++)
+//
+//                if(Door_status.get(0).equals("true"))
+//                {
+//                    door_auth_false();
+//                }
+//                else// if(Door_status.get(0).equals("false"))
+//                {
+//
+//                    door_auth_true();
+//                }
+//
+////                for(int i=0;i<=Door_status.size();i++)
 ////                {
-////                    avg_time_total+=Integer.parseInt(avg_time.get(i));
+////                    Toast.makeText(getApplicationContext(),Door_status.get(i),Toast.LENGTH_LONG);
 ////                }
-////                mTimeLeftInMillis1=avg_time_total;
-////                Toast.makeText(getApplicationContext(),""+avg_time_total,Toast.LENGTH_LONG).show();
+//
+//                //Door_status.clear();
+//
+//
+//
 //
 //            }
 //
@@ -285,8 +520,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 //
 //            }
 //        });
-
-
+//
 
 
 
@@ -305,16 +539,53 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
                     if (check[0].equals("Water Heater"))
                     {
+                        time=check[2];
+
                         if (check[1].equals("true"))
                         {
 
 
-                            water_heater_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                            water_heater_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                             water_heater_card.startAnimation(animation);
 
                             water_heater_status=true;
                             mConnectedThread.write("a");
+
+                            //startTimer_WaterHeater();
+                            timeDiff1.setText("");
+
+
+                            if (water_heater_eco_status == true) {
+
+                                 if(check[2].equals("10000")) {
+                                     time=check[2];
+
+                                    mTimeLeftInMillis = 10000;
+
+
+                                    if (mTimerRunning) {
+                                        pauseTimer();
+                                        startTimer();
+                                    } else {
+                                        startTimer();
+                                    }
+
+
+                                } else if (check[2].equals("20000")) {
+                                     time=check[2];
+
+                                    mTimeLeftInMillis = 20000;
+
+                                    if (mTimerRunning) {
+                                        pauseTimer();
+                                        startTimer();
+                                    } else {
+                                        startTimer();
+                                    }
+
+                                }
+                            }
 
 
                         }
@@ -331,6 +602,12 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                             water_heater_status=false;
                             mConnectedThread.write("b");
 
+                            mTextViewCountDown.setText("            ");
+
+                           // endTimer_WaterHeater();
+                           // diffTimer_WaterHeater();
+                            //upload_Time_Diff_In_Firebase1();
+
 
                         }
 
@@ -340,14 +617,14 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                         if (check[1].equals("true"))
                         {
 
-                            ironbox_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                            ironbox_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                             iron_box_card.startAnimation(animation);
 
                             iron_box_status=true;
                             mConnectedThread.write("c");
 
-                            startTimer_IronBox();
+                            //startTimer_IronBox();
                             timeDiff.setText("");
 
 
@@ -362,9 +639,9 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                             iron_box_status=false;
                             mConnectedThread.write("d");
 
-                            endTimer_IronBox();
-                            diffTimer_IronBox();
-                            upload_Time_Diff_In_Firebase();
+                            //endTimer_IronBox();
+                            //diffTimer_IronBox();
+                            //upload_Time_Diff_In_Firebase();
 
                         }
                     }
@@ -373,7 +650,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                         if (check[1].equals("true"))
                         {
 
-                            bedroom_light_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                            bedroom_light_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                             bedroom_light_card.startAnimation(animation);
 
@@ -396,7 +673,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                         if (check[1].equals("true"))
                         {
 
-                            bedroom_fan_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                            bedroom_fan_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                             bedroom_fan_card.startAnimation(animation);
 
@@ -419,7 +696,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                         if (check[1].equals("true"))
                         {
 
-                            washingmachine_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                            washingmachine_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                             washingmachine_card.startAnimation(animation);
 
@@ -444,15 +721,56 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                         if (check[1].equals("true"))
                         {
 
-                            water_motor_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                            water_motor_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                             watermotor_card.startAnimation(animation);
 
                             water_motor_status=true;
                             mConnectedThread.write("k");
+
+                            //startTimer_WaterMotor();
+                            timeDiff2.setText("");
+
+                            if (water_motor_eco_status == true) {
+
+                                if(time.equals("10000")) {
+
+
+                                    mTimeLeftInMillis1 = 10000;
+
+
+                                    if (mTimerRunning1) {
+                                        pauseTimer1();
+                                        startTimer1();
+                                    } else {
+                                        startTimer1();
+                                    }
+
+
+                                } else if (time.equals("20000")) {
+
+
+                                    mTimeLeftInMillis1 = 20000;
+
+                                    if (mTimerRunning1) {
+                                        pauseTimer1();
+                                        startTimer1();
+                                    } else {
+                                        startTimer1();
+                                    }
+
+                                }
+                            }
+
+
+
                         }
                         else if (check[1].equals("false"))
                         {
+
+                           // endTimer_WaterMotor();
+                           // diffTimer_WaterMotor();
+                           // upload_Time_Diff_In_Firebase2();
 
                             water_motor_lay.setBackgroundColor(Color.parseColor("#ffffff"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
@@ -467,7 +785,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                         if (check[1].equals("true"))
                         {
 
-                            outside_light_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                            outside_light_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                             outside_light_card.startAnimation(animation);
 
@@ -531,36 +849,18 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                         if (check[1].equals("true"))
                         {
 
-                            if(check[2].equals("10000"))
-                        {
-                            mTimeLeftInMillis=10000;
-
-                            if (mTimerRunning) {
-                                pauseTimer();
-                                startTimer();
-                            } else {
-                                startTimer();
-                            }
-
-                        } else if(check[2].equals("20000"))
-                            {
-                                mTimeLeftInMillis=20000;
-
-                                if (mTimerRunning) {
-                                   pauseTimer();
-                                   startTimer();
-                                } else {
-                                    startTimer();
-                                }
-
-                            }
+                         water_heater_eco_status=true;
+                            water_heater_eco.setVisibility(View.VISIBLE);
 
 
                         }
                         else if (check[1].equals("false"))
                         {
 
-                            mTextViewCountDown.setText("");
+                            water_heater_eco_status=false;
+                            water_heater_eco.setVisibility(View.INVISIBLE);
+
+                            mTextViewCountDown.setText("            ");
 
                         }
                     }
@@ -590,22 +890,30 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                     {
                         if (check[1].equals("true"))
                         {
+                            bedroom_light_eco_status=true;
+                            bedroom_light_eco.setVisibility(View.VISIBLE);
 
                         }
                         else if (check[1].equals("false"))
                         {
 
+                            bedroom_light_eco.setVisibility(View.INVISIBLE);
+                            bedroom_light_eco_status=false;
                         }
                     }
                     else if (check[0].equals("Bedroom Fan"))
                     {
                         if (check[1].equals("true"))
                         {
+                            bedroom_fan_eco_status=true;
+                            bedroom_fan_eco.setVisibility(View.VISIBLE);
 
                         }
                         else if (check[1].equals("false"))
                         {
 
+                            bedroom_fan_eco_status=false;
+                            bedroom_fan_eco.setVisibility(View.INVISIBLE);
                         }
                     }
                     else if (check[0].equals("Washing Machine"))
@@ -624,11 +932,15 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                     {
                         if (check[1].equals("true"))
                         {
+                            water_motor_eco_status=true;
+                            water_motor_eco.setVisibility(View.VISIBLE);
 
                         }
                         else if (check[1].equals("false"))
                         {
+                            water_motor_eco_status=false;
 
+                            water_motor_eco.setVisibility(View.INVISIBLE);
                         }
                     }
                     else if (check[0].equals("Outside Light"))
@@ -684,40 +996,40 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                             sb.delete(0, sb.length());                                      // and clear
 
                             //Toast.makeText(Home_Dynamic_Display.this,""+sbprint,Toast.LENGTH_SHORT).show();
-                            if(sbprint.equals("0001"))
-                            {
-                                motion_detected();
-
-                            }
-                            else if (sbprint.equals("0000"))
-                            {
-
-                                no_human_detected();
-                            }
-                            else if(sbprint.equals("1111"))
-                            {
-                                darkness_detected();
-
-                            }
-                            else if (sbprint.equals("1110"))
-                            {
-
-                                no_darkness();
-                            }
-                            else if (sbprint.equals("1010"))
-                            {
-
-                                Toast.makeText(getApplicationContext(),
-                                        "water tank empty",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                            else if (sbprint.equals("1011"))
-                            {
-
-                                Toast.makeText(getApplicationContext(),
-                                        "water tank full",
-                                        Toast.LENGTH_SHORT).show();
-                            }
+//                            if(sbprint.equals("0001"))
+//                            {
+//                                motion_detected();
+//
+//                            }
+//                            else if (sbprint.equals("0000"))
+//                            {
+//
+//                                no_human_detected();
+//                            }
+//                            else if(sbprint.equals("1111"))
+//                            {
+//                                darkness_detected();
+//
+//                            }
+//                            else if (sbprint.equals("1110"))
+//                            {
+//
+//                                no_darkness();
+//                            }
+//                            else if (sbprint.equals("1010"))
+//                            {
+//
+//                                Toast.makeText(getApplicationContext(),
+//                                        "water tank empty",
+//                                        Toast.LENGTH_SHORT).show();
+//                            }
+//                            else if (sbprint.equals("1011"))
+//                            {
+//
+//                                Toast.makeText(getApplicationContext(),
+//                                        "water tank full",
+//                                        Toast.LENGTH_SHORT).show();
+//                            }
 
                         }
 
@@ -739,19 +1051,24 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                 if(water_heater_status==false)
                 {
                     mConnectedThread.write("a");
-                    water_heater_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                    water_heater_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                     water_heater_card.startAnimation(animation);
 
                     water_heater_status=true;
                     database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
-                    database_reference.child("WATER HEATER").setValue("Water Heater_true");
+                    database_reference.child("WATER HEATER").setValue("Water Heater_true_"+time);
+
+
+                    startTimer_WaterHeater();
+                    timeDiff1.setText("");
 
 
                 }
                 else if (water_heater_status==true)
                 {
                     mConnectedThread.write("b");
+
 
                     water_heater_lay.setBackgroundColor(Color.parseColor("#ffffff"));
 //                            water_heater_lay.setBackgroundResource(R.drawable.bc);
@@ -760,7 +1077,17 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
                     water_heater_status=false;
                     database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
-                    database_reference.child("WATER HEATER").setValue("Water Heater_false");
+                    database_reference.child("WATER HEATER").setValue("Water Heater_false_"+time);
+
+
+                    mTextViewCountDown.setText("            ");
+                    endTimer_WaterHeater();
+                    diffTimer_WaterHeater();
+                    upload_Time_Diff_In_Firebase1();
+                    if (mTimerRunning) {
+                        pauseTimer();
+                        resetTimer();
+                    }
 
                 }
             }
@@ -773,7 +1100,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                 if(iron_box_status==false)
                 {
                     mConnectedThread.write("c");
-                    ironbox_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                    ironbox_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                     iron_box_card.startAnimation(animation);
 
@@ -811,7 +1138,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                 if(outside_light_statys==false)
                 {
                     mConnectedThread.write("m");
-                    outside_light_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                    outside_light_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                     outside_light_card.startAnimation(animation);
 
@@ -842,7 +1169,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                 if(bedroom_light_status==false)
                 {
                     mConnectedThread.write("e");
-                    bedroom_light_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                    bedroom_light_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                     bedroom_light_card.startAnimation(animation);
 
@@ -875,10 +1202,11 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                 {
 
                     mConnectedThread.write("k");
-                    water_motor_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                    water_motor_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                     watermotor_card.startAnimation(animation);
 
+                    startTimer_WaterMotor();
                     water_motor_status=true;
                     database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
                     database_reference.child("WATER MOTOR").setValue("Water Motor_true");
@@ -892,6 +1220,13 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
                     watermotor_card.startAnimation(animation);
 
+                    endTimer_WaterMotor();
+                    diffTimer_WaterMotor();
+                    upload_Time_Diff_In_Firebase2();
+                    if (mTimerRunning1) {
+                        pauseTimer1();
+                        resetTimer1();
+                    }
                     water_motor_status=false;
                     database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
                     database_reference.child("WATER MOTOR").setValue("Water Motor_false");
@@ -905,7 +1240,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                 if(bedroom_fan_status==false)
                 {
                     mConnectedThread.write("g");
-                    bedroom_fan_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                    bedroom_fan_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                     bedroom_fan_card.startAnimation(animation);
 
@@ -936,7 +1271,7 @@ public class Home_Dynamic_Display extends AppCompatActivity {
                 {
 
                     mConnectedThread.write("i");
-                    washingmachine_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+                    washingmachine_lay.setBackgroundColor(Color.parseColor("#36ca4d"));
                     Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                     washingmachine_card.startAnimation(animation);
 
@@ -965,7 +1300,38 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
 
     }// **********************// ON CREATE *************************************************************************
+
+    private void door_auth_false()
+    {
+        doorstatus_textview.setText("LOCKED");
+        door_imageview.setBackgroundResource(R.drawable.door_open);
+        mConnectedThread.write("y");
+    }
+
+    private void door_auth_true()
+    {
+        doorstatus_textview.setText("UNLOCKED");
+        door_imageview.setBackgroundResource(R.drawable.door);
+        mConnectedThread.write("x");
+
+    }
+
+    private void flipper(int i) {
+        ImageView img=new ImageView(this);
+        img.setBackgroundResource(i);
+        vf.addView(img);
+        vf.setFlipInterval(2500);
+        vf.setAutoStart(true);
+        vf.setInAnimation(this,android.R.anim.slide_in_left);
+        vf.setOutAnimation(this,android.R.anim.slide_out_right);
+
+
+    }
+
     private void startTimer() {
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
+        database_reference.child("WATER HEATER").setValue("Water Heater_false");
+
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -976,12 +1342,21 @@ public class Home_Dynamic_Display extends AppCompatActivity {
             @Override
             public void onFinish() {
                 mTimerRunning = false;
-               // mButtonStartPause.setText("Start");
-//                mButtonStartPause.setVisibility(View.INVISIBLE);
-//                mButtonReset.setVisibility(View.VISIBLE);
+
                 database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
                 database_reference.child("WATER HEATER").setValue("Water Heater_true");
-                /////
+                mConnectedThread.write("b");
+
+                water_heater_lay.setBackgroundColor(Color.parseColor("#ffffff"));
+//                            water_heater_lay.setBackgroundResource(R.drawable.bc);
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
+                water_heater_card.startAnimation(animation);
+
+                water_heater_status=false;
+                database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
+                database_reference.child("WATER HEATER").setValue("Water Heater_false_"+time);
+
+                mTextViewCountDown.setText("            ");
             }
         }.start();
 
@@ -993,6 +1368,8 @@ public class Home_Dynamic_Display extends AppCompatActivity {
     private void pauseTimer() {
         mCountDownTimer.cancel();
         mTimerRunning = false;
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
+        database_reference.child("WATER HEATER").setValue("Water Heater_false");
 //        mButtonStartPause.setText("Start");
 //        mButtonReset.setVisibility(View.VISIBLE);
     }
@@ -1000,6 +1377,8 @@ public class Home_Dynamic_Display extends AppCompatActivity {
     private void resetTimer() {
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
         updateCountDownText();
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
+        database_reference.child("WATER HEATER").setValue("Water Heater_false");
 //        mButtonReset.setVisibility(View.INVISIBLE);
 //        mButtonStartPause.setVisibility(View.VISIBLE);
     }
@@ -1024,15 +1403,33 @@ public class Home_Dynamic_Display extends AppCompatActivity {
         nightmode_lay.setBackgroundColor(Color.parseColor("#ffffff"));
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
        nightmode_card.startAnimation(animation);
+        mConnectedThread.write("n");
+
+        outside_light_lay.setBackgroundColor(Color.parseColor("#ffffff"));
+        Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
+        outside_light_card.startAnimation(animation1);
+
+        outside_light_statys=false;
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
+        database_reference.child("OUTSIDE LIGHT").setValue("Outside Light_false");
+
 
 
 
     }
 
     private void darkness_detected() {
+        mConnectedThread.write("m");
         nightmode_lay.setBackgroundColor(Color.parseColor("#ef4343"));
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
         nightmode_card.startAnimation(animation);
+        outside_light_lay.setBackgroundColor(Color.parseColor("#ef4343"));
+        Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
+        outside_light_card.startAnimation(animation1);
+
+        outside_light_statys=true;
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
+        database_reference.child("OUTSIDE LIGHT").setValue("Outside Light_true");
 
 
 
@@ -1040,13 +1437,20 @@ public class Home_Dynamic_Display extends AppCompatActivity {
 
     public void ShowPopup(View v) {
 
-        invisible();
+        //invisible();
         Button btnok,btnlogout;
         myDialog.setContentView(R.layout.custom_popup);
+        TextView ID=(TextView)myDialog.findViewById(R.id.userid);
+        TextView NAME=(TextView)myDialog.findViewById(R.id.username);
+
         btnok = (Button) myDialog.findViewById(R.id.btnok);
         btnlogout = (Button) myDialog.findViewById(R.id.btnlogout);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
+
+        ID.setText(passcode_pass);
+        NAME.setText(usr_details.get(4));
+
         btnok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1084,6 +1488,15 @@ public class Home_Dynamic_Display extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
         human_detector_card.startAnimation(animation);
         human_detector_present_absent.setText("A B S E N T");
+
+        mTimeLeftInMillis2 = 10000;
+
+        if (mTimerRunning2) {
+            pauseTimer2();
+            startTimer2();
+        } else {
+            startTimer2();
+        }
     }
 
     private void motion_detected()
@@ -1225,6 +1638,14 @@ public class Home_Dynamic_Display extends AppCompatActivity {
             water_heater_status=false;
 
         }
+    }
+
+    public void door_open(View view) {
+        mConnectedThread.write("x");
+    }
+
+    public void door_close(View view) {
+        mConnectedThread.write("y");
     }
 
 
@@ -1405,11 +1826,26 @@ void invisible()
     public void upload_Time_Diff_In_Firebase()
     {
         database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("IRON BOX AVG TIME");
-        database_reference.child(String.valueOf(seconds)).setValue(String.valueOf(seconds));
+        database_reference.child(database_reference.push().getKey()).setValue(String.valueOf(seconds));
+
+    }
+    public void upload_Time_Diff_In_Firebase1()
+    {
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("WATER HEATER AVG TIME");
+        database_reference.child(database_reference.push().getKey()).setValue(String.valueOf(seconds1));
+
+    }
+    public void upload_Time_Diff_In_Firebase2()
+    {
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("WATER MOTOR AVG TIME");
+        database_reference.child(database_reference.push().getKey()).setValue(String.valueOf(seconds2));
 
     }
 
     private void startTimer1() {
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
+        database_reference.child("WATER MOTOR").setValue("Water Motor_false");
+
         mCountDownTimer1 = new CountDownTimer(mTimeLeftInMillis1, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -1420,7 +1856,23 @@ void invisible()
             @Override
             public void onFinish() {
                 mTimerRunning1 = false;
-               Toast.makeText(getApplicationContext(),""+avg_time_total,Toast.LENGTH_LONG).show();
+
+
+                database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
+                database_reference.child("WATER MOTOR").setValue("Water Motor_true");
+                mConnectedThread.write("b");
+
+                water_motor_lay.setBackgroundColor(Color.parseColor("#ffffff"));
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
+                water_heater_card.startAnimation(animation);
+
+                water_motor_status=false;
+                database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
+                database_reference.child("WATER MOTOR").setValue("Water Motor_false_10000");
+
+                mTextViewCountDown1.setText("            ");
+
+
             }
         }.start();
 
@@ -1432,6 +1884,8 @@ void invisible()
     private void pauseTimer1() {
         mCountDownTimer1.cancel();
         mTimerRunning1 = false;
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
+        database_reference.child("WATER MOTOR").setValue("Water Motor_false");
 //        mButtonStartPause.setText("Start");
 //        mButtonReset.setVisibility(View.VISIBLE);
     }
@@ -1439,6 +1893,8 @@ void invisible()
     private void resetTimer1() {
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
         updateCountDownText1();
+        database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("NOTIFICATION");
+        database_reference.child("WATER MOTOR").setValue("Water Motor_false");
 //        mButtonReset.setVisibility(View.INVISIBLE);
 //        mButtonStartPause.setVisibility(View.VISIBLE);
     }
@@ -1449,7 +1905,212 @@ void invisible()
 
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
-        // mTextViewCountDown.setText("Timer : "+timeLeftFormatted);
+        mTextViewCountDown1.setText("Timer : "+timeLeftFormatted);
+    }
+
+
+
+    //*********************************TIME DIFF FOR WATER HEATER************************
+
+    public void startTimer_WaterHeater()
+    {
+
+        Calendar start = Calendar.getInstance();
+        t1hours1  = start.get(Calendar.HOUR_OF_DAY);
+        t1mins1 = start.get(Calendar.MINUTE);
+        t1day1 = start.get(Calendar.DAY_OF_WEEK);
+        t1secs1 = start.get(Calendar.SECOND);
+    }
+    public void endTimer_WaterHeater()
+    {
+        Calendar stop = Calendar.getInstance();
+        t2hours1 = stop.get(Calendar.HOUR_OF_DAY);
+        t2mins1 = stop.get(Calendar.MINUTE);
+        t2day1 = stop.get(Calendar.DAY_OF_WEEK);
+        t2secs1 = stop.get(Calendar.SECOND);
+
+    }
+    public void diffTimer_WaterHeater()
+    {
+        int hours, minutes;
+
+        // same day
+        if(t2day1-t1day1==0) {
+            hours = t2hours1 - t1hours1;
+            minutes = t2mins1 - t1mins1;
+            seconds1 = t2secs1 - t1secs1;
+            if (minutes < 0) {
+                minutes += 60;
+                hours -= 1;
+
+            }
+            if (seconds1<0) {
+                seconds1 += 60;
+                minutes -= 1;
+            }
+            timeDiff1.setText("Used Duration "+seconds1+ " seconds" );
+        }
+        // different days
+        else {
+            // t2day-t1day not equals 0
+            int n = ((t2day1-t1day1) + 7)%7;
+            hours = ((t2hours1 - t1hours1) + 24)%24;
+            minutes = t2mins1 - t1mins1;
+            seconds1 = t2secs1 - t1secs1;
+            if(minutes<0) {
+                minutes += 60;
+                hours -=1;
+            }
+            if(seconds1<0) {
+                seconds1 += 60;
+                minutes -= 1;
+            }
+            hours += (n-1)*24;
+            timeDiff1.setText("Used Duration "+seconds1+ " seconds" );
+        }
+    }
+
+    //*********************************TIME DIFF FOR WATER MOTOR************************
+
+    public void startTimer_WaterMotor()
+    {
+
+        Calendar start = Calendar.getInstance();
+        t1hours2  = start.get(Calendar.HOUR_OF_DAY);
+        t1mins2 = start.get(Calendar.MINUTE);
+        t1day2= start.get(Calendar.DAY_OF_WEEK);
+        t1secs2 = start.get(Calendar.SECOND);
+    }
+    public void endTimer_WaterMotor()
+    {
+        Calendar stop = Calendar.getInstance();
+        t2hours2 = stop.get(Calendar.HOUR_OF_DAY);
+        t2mins2 = stop.get(Calendar.MINUTE);
+        t2day2 = stop.get(Calendar.DAY_OF_WEEK);
+        t2secs2 = stop.get(Calendar.SECOND);
+
+    }
+    public void diffTimer_WaterMotor()
+    {
+        int hours, minutes;
+
+        // same day
+        if(t2day2-t1day2==0) {
+            hours = t2hours2 - t1hours2;
+            minutes = t2mins2 - t1mins2;
+            seconds2 = t2secs2 - t1secs2;
+            if (minutes < 0) {
+                minutes += 60;
+                hours -= 1;
+
+            }
+            if (seconds2<0) {
+                seconds2 += 60;
+                minutes -= 1;
+            }
+            timeDiff2.setText("Used Duration "+seconds2+ " seconds" );
+        }
+        // different days
+        else {
+            // t2day-t1day not equals 0
+            int n = ((t2day2-t1day2) + 7)%7;
+            hours = ((t2hours2 - t1hours2) + 24)%24;
+            minutes = t2mins2 - t1mins2;
+            seconds2 = t2secs2 - t1secs2;
+            if(minutes<0) {
+                minutes += 60;
+                hours -=1;
+            }
+            if(seconds2<0) {
+                seconds2 += 60;
+                minutes -= 1;
+            }
+            hours += (n-1)*24;
+            timeDiff2.setText("Used Duration "+seconds2+ " seconds" );
+        }
+    }
+
+//*****************************************************************************************
+
+    private void startTimer2() {
+        mCountDownTimer2 = new CountDownTimer(mTimeLeftInMillis2, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis2 = millisUntilFinished;
+                updateCountDownText2();
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning2 = false;
+               // Toast.makeText(getApplicationContext(),"ENDED",Toast.LENGTH_LONG).show();
+
+                if(bedroom_fan_eco_status==true)
+                {
+                    mConnectedThread.write("h");
+                    bedroom_fan_lay.setBackgroundColor(Color.parseColor("#ffffff"));
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
+                    bedroom_fan_card.startAnimation(animation);
+
+                    bedroom_fan_status=false;
+                    database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
+                    database_reference.child("BEDROOM FAN").setValue("Bedroom Fan_false");
+                }
+
+                if(bedroom_light_eco_status==true)
+                {
+                    mConnectedThread.write("f");
+                    bedroom_light_lay.setBackgroundColor(Color.parseColor("#ffffff"));
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomout);
+                    bedroom_light_card.startAnimation(animation);
+
+                    bedroom_light_status=false;
+                    database_reference= FirebaseDatabase.getInstance().getReference(passcode_pass).child("DEVICE STATUS");
+                    database_reference.child("BEDROOM LIGHT").setValue("Bedroom Light_false");
+
+
+                }
+
+
+
+
+            }
+        }.start();
+
+        mTimerRunning2 = true;
+//        mButtonStartPause.setText("pause");
+//        mButtonReset.setVisibility(View.INVISIBLE);
+    }
+
+    private void pauseTimer2() {
+        mCountDownTimer2.cancel();
+        mTimerRunning2 = false;
+//        mButtonStartPause.setText("Start");
+//        mButtonReset.setVisibility(View.VISIBLE);
+    }
+
+    private void resetTimer2() {
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        updateCountDownText2();
+//        mButtonReset.setVisibility(View.INVISIBLE);
+//        mButtonStartPause.setVisibility(View.VISIBLE);
+    }
+
+    private void updateCountDownText2() {
+        int minutes = (int) (mTimeLeftInMillis2 / 1000) / 60;
+        int seconds = (int) (mTimeLeftInMillis2 / 1000) % 60;
+
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+        mTextViewCountDown2.setText("Timer : "+timeLeftFormatted);
+    }
+
+
+    public void consumption_activity(View view)
+    {
+        Intent nxt=new Intent(Home_Dynamic_Display.this,Consumption_Activity.class);
+        nxt.putExtra("KEY",passcode_pass);
+        startActivity(nxt);
     }
 
 

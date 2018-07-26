@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fcfbfb"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="600dp"
+                android:layout_height="400dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATISTICS"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="50sp"
+                    android:textColor="#000"
+                    android:paddingLeft="50sp"
+                    android:background="#ca3737"
+
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:text="Sno                   Date                       Bill Amount"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="31sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="001             10-Feb-2018                                   1300"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="30sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#f7eeee"
+                    android:onClick="Feb"
+                    />
+                <TextView
+                    android:onClick="Apr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="002             10-Apr-2018                                   1200"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="30sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#f7eeee"
+                    />
+                <TextView
+                    android:onClick="Jun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="003             10-Jun-2018                                  1100"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="30sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#f7eeee"
+                    />
+                <TextView
+                    android:onClick="Aug"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="004             10-Aug-2018                                  1120"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="30sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#f7eeee"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="600dp"
+                android:layout_height="300dp"
+                android:orientation="vertical">
+                <com.jjoe64.graphview.GraphView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:id="@+id/graph" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10-Feb-2018"
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_marginLeft="30dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10-Apr-2018"
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="50dp"
+                    android:fontFamily="sans-serif-condensed"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10-Jun-2018"
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="sans-serif-condensed"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10-Aug-2018"
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="sans-serif-condensed"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/Monthly_Consumption_Lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ca3737"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="20dp"
+
+    android:layout_marginBottom="50dp">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/Monthly_Consumption_CardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+   android:backgroundTint="#ece9e9"
+       android:layout_margin="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Monthly Consumption Details"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="40sp"
+            android:textStyle="italic"
+            android:textColor="#000"
+            android:paddingLeft="50sp"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:layout_marginTop="120dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="300dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="Bill Number"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="Consumer Number"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:text="Units Consumed"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:text="Bill Amount"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:text="Payment Date"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:text="Payment Mode"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:text="Extra Charges"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="350dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/bill_Number"
+                    android:text="275385"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/Consumer_number"
+                    android:text="500-347-453-020"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:id="@+id/Units_consumed"
+                    android:text="490"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:id="@+id/bill_amount"
+                    android:text="1300"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:id="@+id/payment_date"
+                    android:text="18-Feb-2018"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:id="@+id/payment_mode"
+                    android:text="Net Banking"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+                <TextView
+                    android:text="Nil"
+                    android:textSize="30sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#000"
+                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:layout_marginTop="420dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="HIGHLY CONSUMED APPLIANCES"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:backgroundTint="#000"
+                android:layout_marginTop="30dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp">
+
+                    <ImageView
+                        android:layout_width="140dp"
+                        android:onClick="create"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/heater1"
+                        android:layout_gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Water Heater (180 Units)"
+                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif-condensed"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
+
+                        <ImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/motor"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Water Heater (180 Units)"
+                            android:textSize="20sp"
+                            android:textColor="#000"
+                            android:fontFamily="sans-serif-condensed"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
+
+                        <ImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/ironbox"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Water Heater (180 Units)"
+                            android:textSize="20sp"
+                            android:textColor="#000"
+                            android:fontFamily="sans-serif-condensed"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

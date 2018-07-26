@@ -19,17 +19,28 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.google.firebase:firebase-database:11.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.android.support:cardview-v7:26.1.0'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
-    compile 'com.airbnb.android:lottie:2.5.1'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.airbnb.android:lottie:2.5.1'
+    compile 'com.github.thuat26:CustomGaugeView:1.0'
+    implementation 'com.jjoe64:graphview:4.2.2'
+
+    //*************new
+
+
+    implementation 'com.github.twalcari:java-prettify:1.2.2'
+    implementation 'de.greenrobot:eventbus:2.4.0'
+    implementation 'com.daasuu:EasingInterpolator:1.0.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
 }
+
 
 
 

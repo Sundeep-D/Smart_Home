@@ -3,17 +3,20 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:gauge="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/bc_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
+
+        android:layout_alignParentTop="true"
         android:background="#f2efef"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop" />
 
 
     <ImageView
@@ -59,6 +62,7 @@
         android:text="329987DFSKFHGS"
         android:textColor="#283750"
         android:textSize="25sp"
+        android:fontFamily="sans-serif-condensed"
         android:textStyle="bold" />
 
     <TextView
@@ -82,31 +86,12 @@
         android:layout_marginLeft="33dp"
         android:layout_toRightOf="@id/splitter1"
         android:text="D.SUNDEEP"
+        android:fontFamily="sans-serif-condensed"
         android:textColor="#283750"
         android:textSize="22sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/splitter2"
-        android:layout_width="1dp"
-        android:layout_height="110dp"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="4dp"
-        android:layout_toRightOf="@id/home_id_TV"
-        android:background="#000000"
-        android:visibility="invisible" />
 
-    <!--<ImageView-->
-        <!--android:id="@+id/wifi_image"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="135dp"-->
-        <!--android:layout_alignTop="@+id/splitter2"-->
-        <!--android:layout_marginLeft="45dp"-->
-        <!--android:layout_marginStart="45dp"-->
-        <!--android:layout_toEndOf="@+id/splitter2"-->
-        <!--android:layout_toRightOf="@+id/splitter2"-->
-        <!--android:onClick="zoomout"-->
-        <!--android:src="@drawable/wifi_logo" />-->
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -117,10 +102,9 @@
 
 
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_toEndOf="@+id/splitter2"
-        android:layout_toRightOf="@+id/splitter2"
+        android:layout_marginLeft="550dp"
+        android:layout_toEndOf="@+id/home_user_name_TV"
+        android:layout_toRightOf="@+id/home_user_name_TV"
         app:lottie_autoPlay="true"
         app:lottie_fileName="wifi.json"
         app:lottie_loop="true" />
@@ -150,95 +134,186 @@
         android:textColor="#FF8A65"
         android:textSize="25sp" />
 
-    <com.airbnb.lottie.LottieAnimationView
+    <!--<com.airbnb.lottie.LottieAnimationView-->
 
-        android:id="@+id/upload_download"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
-
-        android:layout_below="@id/textView"
-        android:layout_toRightOf="@id/aplliances"
-
-        android:layout_marginTop="50dp"
+        <!--android:id="@+id/upload_download"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
 
 
-        android:layout_marginLeft="100dp"
+        <!--android:layout_below="@id/textView"-->
+        <!--android:layout_toRightOf="@id/aplliances"-->
+
+        <!--android:layout_marginTop="50dp"-->
 
 
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="sort.json"
-        app:lottie_loop="true" />
-
-    <TextView
-    android:id="@+id/income"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-        android:text="Incoming\nVoltage"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:layout_marginLeft="10dp"
-
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/textView"
-        android:layout_toRightOf="@id/aplliances"
+        <!--android:layout_marginLeft="100dp"-->
 
 
-     />
+        <!--app:lottie_autoPlay="true"-->
+        <!--app:lottie_fileName="sort.json"-->
+        <!--app:lottie_loop="true" />-->
 
-    <TextView
-        android:id="@+id/upload"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/electricity_details"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Outgoing\nVoltage"
-        android:textAlignment="center"
-        android:textSize="16sp"
-
-        android:layout_marginLeft="170dp"
-
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/textView"
         android:layout_toRightOf="@id/aplliances"
+        android:layout_below="@id/wifi_image">
+
+        <TextView
+            android:id="@+id/IncomingVolatgeGauge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Incoming Volatge Gauge"
+            android:textSize="23sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#000"
+            />
+        <TextView
+            android:id="@+id/KWh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KWh"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="165dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#e11616"
+            android:layout_below="@+id/IncomingVolatgeGauge"
+            />
+
+        <com.ntt.customgaugeview.library.GaugeView
+            android:id="@+id/gauge_view"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            gauge:divisions="11"
+            gauge:subdivisions="1"
+            gauge:rangeValues="@array/speedTestRangeValues"
+            gauge:scaleEndValue="240"
+            gauge:showInnerRim="false"
+            gauge:showNeedle="true"
+            gauge:showOuterBorder="false"
+            gauge:showOuterRim="true"
+            gauge:showOuterShadow="false"
+            gauge:showRangeText="true"
+            gauge:showRanges="true"
+            gauge:showScale="true"
+
+            gauge:textUnit=" "
+            gauge:textUnitSize="0.09"
+            gauge:textValueSize="0.15"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+
+            android:layout_below="@+id/IncomingVolatgeGauge"
+            />
 
 
-        />
+        <TextView
+            android:id="@+id/income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Incoming\nVoltage"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:layout_marginLeft="100dp"
+            android:layout_below="@+id/gauge_view"
+            android:layout_marginTop="0dp"
+
+            />
+        <TextView
+            android:id="@+id/incomeVoltage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="210 V"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/income"
+            android:layout_marginLeft="105dp"
+            />
+        <com.airbnb.lottie.LottieAnimationView
+
+            android:id="@+id/upload_download"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_toRightOf="@id/income"
+            android:layout_below="@+id/gauge_view"
+
+            android:layout_marginTop="10dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="sort.json"
+            app:lottie_loop="true" />
+        <TextView
+            android:id="@+id/upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outgoing\nVoltage"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@id/upload_download"
+            android:layout_below="@+id/gauge_view"
+            />
+        <TextView
+            android:id="@+id/outgoingVoltage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="210 V"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/upload"
+            android:layout_toRightOf="@id/upload_download"
+            android:layout_marginLeft="10dp"
+            />
+        <TextView
+            android:id="@+id/unitsconsumed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Units Consumed"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/income"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-condensed"
+            android:onClick="door_open"
+            />
+        <TextView
+            android:id="@+id/units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/unitsconsumed"
+            android:layout_marginTop="5dp"
+            android:text="1125 kWh"
+            android:textColor="#E57373"
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:onClick="door_close"/>
+        <ViewFlipper
+            android:id="@+id/flipper"
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/units"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:background="@drawable/rajbanner"
+            android:layout_centerHorizontal="true"
+
+            android:text="" />
 
 
-    <TextView
-        android:id="@+id/incomeVoltage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="210 V"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@id/textView"
-        android:layout_toRightOf="@id/aplliances"/>
-
-    <TextView
-        android:id="@+id/outgoingVoltage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="210 V"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="101dp"
-        android:layout_marginLeft="170dp"
-        android:layout_below="@id/textView"
-        android:layout_toRightOf="@id/aplliances"/>
+    </RelativeLayout>
 
 
 
-    <!--<ImageView-->
-        <!--android:id="@+id/bluetooth_image"-->
-        <!--android:layout_width="60dp"-->
-        <!--android:layout_height="130dp"-->
-        <!--android:layout_alignBottom="@+id/home_user_name_TV"-->
-        <!--android:layout_toEndOf="@+id/textView3"-->
-        <!--android:layout_toRightOf="@+id/textView3"-->
 
-        <!--android:src="@drawable/bluetooth_smart" />-->
 
     <com.airbnb.lottie.LottieAnimationView
 
@@ -288,150 +363,13 @@
         android:textSize="25sp" />
 
 
-    <!--</RelativeLayout>-->
 
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="240dp"-->
-    <!--android:layout_height="match_parent"-->
-    <!---->
-    <!---->
-
-    <!--android:layout_alignParentRight="true">-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/units_Consumed_tv"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginRight="30dp"-->
-
-        <!--android:layout_marginLeft="15dp"-->
-        <!--android:layout_marginTop="160dp"-->
-        <!--android:text="Units Consumed"-->
-        <!--android:textColor="#000"-->
-        <!--android:textSize="26sp"-->
-        <!--android:paddingLeft="10dp"-->
-        <!--android:textStyle="bold" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/units_tv"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/units_Consumed_tv"-->
-        <!--android:textSize="40sp"-->
-        <!--android:text="420 Kwh"-->
-        <!--android:layout_marginRight="60dp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:textColor="#DD2C00"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:layout_marginLeft="45dp" />-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/up_arrow"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="70dp"-->
-        <!--android:layout_alignLeft="@+id/units_Consumed_tv"-->
-        <!--android:layout_alignStart="@+id/units_Consumed_tv"-->
-        <!--android:layout_alignTop="@+id/down_arrow"-->
-        <!--android:layout_marginLeft="18dp"-->
-        <!--android:layout_marginStart="18dp"-->
-        <!--android:src="@drawable/up" />-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/down_arrow"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="70dp"-->
-        <!--android:layout_toRightOf="@id/up_arrow"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:layout_marginLeft="25dp"-->
-        <!--android:layout_below="@id/units_tv"-->
-        <!--android:src="@drawable/down" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/up_arrow_value"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/up_arrow"-->
-        <!--android:text="230 V"-->
-        <!--android:textSize="25dp"-->
-
-        <!--android:layout_marginRight="140dp"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:textStyle="bold"-->
-        <!--android:textColor="#9E9E9E"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:layout_marginLeft="35dp"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/down_arrow_value"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignBaseline="@+id/up_arrow_value"-->
-        <!--android:layout_alignBottom="@+id/up_arrow_value"-->
-        <!--android:layout_alignLeft="@+id/down_arrow"-->
-        <!--android:layout_alignStart="@+id/down_arrow"-->
-        <!--android:text="230 V"-->
-        <!--android:textColor="#9E9E9E"-->
-        <!--android:textSize="25dp"-->
-        <!--android:textStyle="bold" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/energy_saving_tv"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignLeft="@+id/units_Consumed_tv"-->
-        <!--android:layout_alignStart="@+id/units_Consumed_tv"-->
-        <!--android:layout_below="@+id/up_arrow_value"-->
-        <!--android:layout_marginTop="27dp"-->
-        <!--android:text="Energy saver"-->
-        <!--android:textColor="#76FF03"-->
-        <!--android:textSize="23sp"-->
-        <!--android:textStyle="bold" />-->
-
-    <!--<ToggleButton-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_alignBaseline="@+id/energy_saving_tv"-->
-        <!--android:layout_alignBottom="@+id/energy_saving_tv"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:layout_marginLeft="15dp"-->
-        <!--android:layout_toRightOf="@id/energy_saving_tv"-->
-        <!--android:id="@+id/toggleButton" />-->
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/out_sation_mode"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/toggleButton"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="25dp"-->
-        <!--android:text="Out Station Mode"-->
-        <!--android:textColor="#ecbb96"-->
-        <!--android:textSize="23sp"-->
-        <!--android:textStyle="bold" />-->
-
-    <!--<ToggleButton-->
-        <!--android:layout_width="150dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_alignEnd="@+id/units_tv"-->
-        <!--android:layout_alignRight="@+id/units_tv"-->
-        <!--android:layout_below="@+id/out_sation_mode"-->
-        <!--android:layout_marginTop="14dp" />-->
-
-
-
-
-    <!--</RelativeLayout>-->
 
     <android.support.v7.widget.CardView
         android:layout_width="70dp"
         android:layout_below="@+id/logo"
         android:layout_marginTop="20dp"
-
+        android:background="#f2efef"
         android:layout_height="match_parent"
         >
 
@@ -441,62 +379,69 @@
             android:layout_height="match_parent"
             android:background="#f2efef"/>
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/analysis"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="110dp"
-            android:id="@+id/imageView" />
+        <!--<ImageView-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:src="@drawable/analysis"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginTop="110dp"-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:onClick="log"/>-->
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignLeft="@+id/imageView"
             android:layout_alignStart="@+id/imageView"
+            android:layout_marginLeft="5dp"
 
             android:layout_marginTop="40dp"
             android:onClick="ShowPopup"
             android:src="@drawable/acc" />
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/cons"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="120dp"
+            android:onClick="consumption_activity"
+            android:id="@+id/consumption" />
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/log"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="210dp"
+            android:onClick="log"
+
+            android:id="@+id/log" />
 
 
     </android.support.v7.widget.CardView>
 
 
 
-    <RelativeLayout
-        android:layout_width="640dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
 
-
-
-        android:layout_marginLeft="70dp">
-        <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:src="@drawable/back_smart2"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--/>-->
-
-    </RelativeLayout>
 
 
     <ScrollView
         android:id="@+id/aplliances"
-        android:layout_width="645dp"
+        android:layout_width="850dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="125dp"
         android:background="#fff"
+        android:layout_marginBottom="10dp"
+
 
         >
 
 
         <RelativeLayout
             android:id="@+id/Appliance_details"
-            android:layout_width="650dp"
-            android:layout_height="400dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
 
 
             android:visibility="visible"
@@ -505,8 +450,8 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/water_heater"
-                android:layout_width="300dp"
-                android:layout_height="140dp"
+                android:layout_width="390dp"
+                android:layout_height="150dp"
                 card_view:cardBackgroundColor="#33197e"
 
 
@@ -533,7 +478,7 @@
                         <!--/>-->
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         >
@@ -541,11 +486,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Water Heater"
+                            android:fontFamily="sans-serif-condensed"
                             android:textColor="#000"
 
                             android:layout_marginTop="5dp"
                             android:layout_marginLeft="5dp"
-                            android:textSize="16sp"
+                            android:textSize="22sp"
                             />
 
                         <ImageView
@@ -570,29 +516,31 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:orientation="horizontal">
 
                             <TextView
+
                                 android:id="@+id/timer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Timer : 30.00"
+                                android:text="                                 "
 
                                 android:layout_marginTop="5dp"
                                 android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
-
-
+                                android:textSize="16sp"
                                 />
 
                             <ImageView
+                                android:id="@+id/water_heater_eco"
                                 android:layout_width="40dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="right|end"
 
-                                android:layout_marginLeft="35dp"
+                                android:layout_marginLeft="15dp"
                                 android:src="@drawable/ecologo"
                                 android:layout_marginTop="1dp"
+
                                 />
                         </LinearLayout>
 
@@ -610,9 +558,9 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dp"
                             android:orientation="horizontal"
-                            android:layout_marginTop="20dp">
+                            android:layout_marginTop="10dp">
 
                             <ImageView
                                 android:layout_width="40dp"
@@ -631,7 +579,7 @@
 
                                 android:layout_marginTop="20dp"
                                 android:layout_marginLeft="10dp"
-                                android:textSize="28sp"
+                                android:textSize="18sp"
                                 android:textAlignment="textEnd"
                                 android:layout_gravity="end"
                                 />
@@ -640,6 +588,15 @@
                         </LinearLayout>
 
 
+
+
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/heater_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            />
 
 
                     </LinearLayout>
@@ -661,8 +618,8 @@
 
 
                 android:layout_toRightOf="@id/water_heater"
-                android:layout_width="150dp"
-                android:layout_height="140dp"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
                 android:background="#004D40"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
@@ -673,7 +630,7 @@
                     android:id="@+id/iron_box_lay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#ef4343"
+                    android:background="#fff"
                     android:layout_margin="3dp"
 
                     android:orientation="vertical">
@@ -686,20 +643,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Iron Box"
+                            android:fontFamily="sans-serif-condensed"
 
+                            android:paddingTop="5dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginLeft="5dp"
                             android:textColor="#000"
                             android:layout_gravity="left"
 
-                            android:textSize="16sp"
+                            android:textSize="22sp"
                             />
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="30dp"
-                            android:layout_gravity="right"
-                            android:layout_marginLeft="40dp"
+                            android:layout_gravity="end"
+                            android:layout_marginLeft="110dp"
                             android:src="@drawable/ecologo"
+
                             android:layout_marginTop="1dp"
                             />
 
@@ -720,9 +680,9 @@
                         android:id="@+id/timeDiff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Used Duration : 59 Seconds"
+                        android:text=""
 
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="3dp"
                         android:layout_marginLeft="3dp"
                         android:textColor="#000"
                         android:layout_gravity="left"
@@ -737,8 +697,8 @@
             <android.support.v7.widget.CardView
                 android:layout_marginTop="5dp"
                 android:id="@+id/bedroom_light"
-                android:layout_width="200dp"
-                android:layout_height="140dp"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
                 android:background="#004D40"
                 android:layout_marginLeft="20dp"
                 card_view:cardBackgroundColor="#33197e"
@@ -749,21 +709,33 @@
                     android:id="@+id/beedroom_lay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#ffffff"
+                    android:background="#fff"
                     android:layout_margin="3dp"
                     android:orientation="vertical">
                     <ImageView
+                        android:id="@+id/bedroom_light_eco"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right|end"
+
+                        android:layout_marginLeft="1dp"
+                        android:src="@drawable/ecologo"
+                        android:layout_marginTop="1dp"
+
+                        />
+                    <ImageView
                         android:layout_width="120dp"
-                        android:layout_height="80dp"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:src="@drawable/bulb"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="1dp"
                         />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Bedroom Light"
-                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif-condensed"
                         android:layout_marginTop="5dp"
                         android:layout_gravity="center"
                         android:textAlignment="center"
@@ -777,8 +749,8 @@
                 android:id="@+id/outside_light"
 
 
-                android:layout_width="150dp"
-                android:layout_height="140dp"
+                android:layout_width="159dp"
+                android:layout_height="150dp"
                 android:background="#004D40"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/iron_box"
@@ -789,7 +761,7 @@
                     android:id="@+id/outside_light_lay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#ef4343"
+                    android:background="#fff"
                     android:layout_margin="3dp"
                     android:orientation="vertical">
                     <TextView
@@ -799,8 +771,9 @@
                         android:textColor="#000"
                         android:layout_marginTop="6dp"
                         android:layout_gravity="center"
+                        android:fontFamily="sans-serif-condensed"
 
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         />
                     <ImageView
                         android:layout_width="100dp"
@@ -818,9 +791,9 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/water_motor"
                 android:layout_toRightOf="@id/bedroom_light"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_below="@+id/iron_box"
-                android:layout_height="140dp"
+                android:layout_height="150dp"
                 android:background="#004D40"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
@@ -834,22 +807,71 @@
                     android:orientation="vertical"
                     android:layout_margin="3dp"
                     android:background="#ffffff">
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="25dp"
-                        android:src="@drawable/motor"
-                        android:layout_marginTop="10dp"
-                        />
-                    <TextView
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Water motor"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="20dp"
-                        android:textSize="22sp"
-                        />
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:scaleType="centerCrop"
+                            android:layout_marginLeft="25dp"
+                            android:src="@drawable/motor"
+                            android:layout_marginTop="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/water_motor_timer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Timer : 89 Secods"
+                            android:textStyle="bold"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="12sp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/water_motor_eco"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="right|end"
+
+                            android:layout_marginLeft="1dp"
+                            android:src="@drawable/ecologo"
+                            android:layout_marginTop="1dp"
+
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Water motor"
+
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="22sp"
+                            android:textColor="#000"
+                            android:fontFamily="sans-serif-condensed"
+                            />
+                        <TextView
+                            android:id="@+id/motor_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textStyle="bold"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="40dp"
+                            android:textSize="12sp"
+                            />
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
@@ -859,10 +881,10 @@
                 android:layout_marginTop="5dp"
                 card_view:cardBackgroundColor="#33197e"
 
-                android:layout_width="150dp"
+                android:layout_width="199dp"
                 android:layout_toRightOf="@+id/water_motor"
                 android:layout_below="@id/outside_light"
-                android:layout_height="140dp"
+                android:layout_height="150dp"
                 android:background="#004D40"
                 android:layout_marginLeft="5dp"
                 >
@@ -874,10 +896,21 @@
                     android:background="#ffffff"
                     android:layout_margin="3dp"
                     android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/bedroom_fan_eco"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right|end"
+
+                        android:layout_marginLeft="1dp"
+                        android:src="@drawable/ecologo"
+                        android:layout_marginTop="1dp"
+
+                        />
 
                     <ImageView
                         android:layout_width="120dp"
-                        android:layout_height="80dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:src="@drawable/fan" />
@@ -885,11 +918,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Bedroom Fan"
-                        android:textStyle="bold"
+
                         android:layout_marginTop="6dp"
                         android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textSize="21sp"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif-condensed"
                         />
 
                 </LinearLayout>
@@ -944,7 +979,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="160dp"
 
-                android:layout_height="140dp"
+                android:layout_height="150dp"
 
                 card_view:cardBackgroundColor="#33197e"
 
@@ -959,7 +994,7 @@
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="120dp"
-                        android:layout_height="80dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:src="@drawable/washing_machine"
                         android:layout_marginTop="10dp"
@@ -968,11 +1003,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Washing Machine"
-                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif-condensed"
                         android:layout_marginTop="5dp"
                         android:layout_gravity="center"
                         android:textAlignment="center"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         />
 
                 </LinearLayout>
@@ -985,8 +1021,8 @@
                 android:id="@+id/human_detector"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/washing_machine"
-                android:layout_width="330dp"
-                android:layout_height="140dp"
+                android:layout_width="400dp"
+                android:layout_height="150dp"
                 android:background="#004D40"
                 android:layout_marginLeft="5dp"
                 android:layout_below="@id/water_motor"
@@ -1014,10 +1050,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Human Detector"
-                            android:textStyle="bold"
+
                             android:layout_marginTop="5dp"
                             android:textSize="22sp"
                             android:paddingLeft="5dp"
+                            android:textColor="#000"
+                            android:fontFamily="sans-serif-condensed"
                             />
 
 
@@ -1042,13 +1080,21 @@
                             />
 
                         <TextView
-                            android:layout_width="120dp"
+                            android:layout_width="220dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:layout_marginTop="10dp"
-                            android:text="Lights and fans will be turned off automatically within certain time"
+                            android:layout_marginTop="30dp"
+                            android:text="Lights and fans will be turned off automatically "
                             />
 
+                        <TextView
+                            android:id="@+id/human_timer"
+                            android:layout_width="220dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_marginTop="1dp"
+                            android:text="Timer"
+                            />
                     </LinearLayout>
 
 
@@ -1060,9 +1106,9 @@
                 android:id="@+id/nightmode"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/human_detector"
-                android:layout_width="110dp"
+                android:layout_width="239dp"
                 android:layout_below="@id/water_motor"
-                android:layout_height="140dp"
+                android:layout_height="150dp"
                 android:background="#004D40"
                 android:layout_marginLeft="5dp"
 
@@ -1082,19 +1128,222 @@
                         android:src="@drawable/night1"
                         android:layout_marginTop="10dp"
                         />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Night Mode"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="Night Mode"
                         android:textAlignment="center"
-                        android:textSize="18sp"
-                        />
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif-condensed"
+                        android:textSize="22sp"
+                         />
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                card_view:cardBackgroundColor="#33197e"
+                android:id="@+id/doorlock"
+                android:layout_marginTop="5dp"
+
+                android:layout_width="435dp"
+                android:layout_below="@id/washing_machine"
+                android:layout_height="160dp"
+                android:background="#004D40"
+                android:layout_marginLeft="20dp"
+
+                >
+
+                <LinearLayout
+                    android:id="@+id/doorlock_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_margin="3dp"
+
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/proraj"/>
+                        <ImageView
+                            android:id="@+id/door_imageview"
+                            android:layout_width="100dp"
+                            android:layout_height="140dp"
+                            android:layout_marginTop="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/door"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Door Lock System"
+                                android:textSize="23sp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="#000"/>
+
+                            <TextView
+                                android:id="@+id/door_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="26sp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="#df2828"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Smart Door Locking system enables you \nto Lock/Unlock the doors using Biometrics"
+                                android:textSize="13sp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="#000"/>
+
+
+                        </LinearLayout>
+
+                        <com.airbnb.lottie.LottieAnimationView
+
+
+                            android:layout_width="70dp"
+                            android:layout_height="130dp"
+                            android:scaleType="centerCrop"
+
+                            android:layout_toRightOf="@id/income"
+                            android:layout_below="@+id/gauge_view"
+
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="figprint.json"
+                            app:lottie_loop="true" />
+
+
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                card_view:cardBackgroundColor="#33197e"
+                android:id="@+id/emty"
+                android:layout_marginTop="5dp"
+
+                android:layout_toRightOf="@+id/doorlock"
+                android:layout_width="368dp"
+                android:layout_below="@id/washing_machine"
+                android:layout_height="160dp"
+                android:background="#004D40"
+                android:layout_marginLeft="5dp"
+
+                >
+
+                <LinearLayout
+                    android:id="@+id/facerecognition_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/proraj"/>
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_marginTop="25dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/face_edited"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Smart Bell System"
+                                android:textSize="23sp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="#000"/>
+
+                            <!--<TextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="10dp"-->
+                                <!--android:text="LOCKED"-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:layout_gravity="center_horizontal"-->
+                                <!--android:textSize="26sp"-->
+                                <!--android:fontFamily="sans-serif-condensed"-->
+                                <!--android:textColor="#df2828"/>-->
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30dp"
+                                android:paddingLeft="10dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="Smart Bell system empowers the client to recognize the individual by face and catches the intruders."
+                                android:textColor="#000"
+                                android:textSize="13sp" />
+
+
+                        </LinearLayout>
+
+                        <com.airbnb.lottie.LottieAnimationView
+
+
+                            android:layout_width="70dp"
+                            android:layout_height="80dp"
+                          android:layout_gravity="center_vertical"
+
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/income"
+                            android:layout_below="@+id/gauge_view"
+
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="face_id.json"
+                            app:lottie_loop="true" />
+
+
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
 
 
 

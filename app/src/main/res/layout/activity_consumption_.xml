@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.smart_home.Consumption_Activity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#000">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="200dp"
+                android:layout_height="90dp"
+                android:scaleType="fitStart"
+                android:layout_marginTop="17dp"
+                android:layout_marginLeft="14dp"
+
+                android:src="@drawable/sihlogo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Energy Consumption Appliances"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_marginTop="23dp"
+                android:layout_marginLeft="280dp"
+
+                />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="250dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:textSize="80sp"/>
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/raise"/>
+
+            </LinearLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/head1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:layout_marginTop="30dp"
+                        android:textColor="#000"
+                        android:layout_marginLeft="50dp"
+                        android:textSize="40sp"/>
+                    <TextView
+                        android:id="@+id/units1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Units Consumed :"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#000"
+                        android:textSize="30sp"/>
+                    <TextView
+                        android:id="@+id/amount1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Payable Amount :"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textColor="#000"
+
+                        android:textSize="30sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="end"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/water_heater_eco"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+
+
+
+                        android:layout_marginLeft="35dp"
+                        android:src="@drawable/ecologo"
+                        android:layout_marginTop="1dp"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ECO MODE"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Use this mode to\nreduce energy\nconsumption"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="italic"
+                        android:layout_marginTop="20dp"/>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="250dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="80sp"/>
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/raise"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/head2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:layout_marginTop="30dp"
+                        android:textColor="#000"
+                        android:layout_marginLeft="50dp"
+                        android:textSize="40sp"/>
+                    <TextView
+                        android:id="@+id/units2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Units Consumed :"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#000"
+
+                        android:textSize="30sp"/>
+                    <TextView
+                        android:id="@+id/amount2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Payable Amount :"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textColor="#000"
+
+                        android:textSize="30sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="end"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/water_heater_eco"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+
+
+
+                        android:layout_marginLeft="35dp"
+                        android:src="@drawable/ecologo"
+                        android:layout_marginTop="1dp"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ECO MODE"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Use this mode to\nreduce energy\nconsumption"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="italic"
+                        android:layout_marginTop="20dp"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="250dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="80sp"/>
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/raise"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/head3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:layout_marginTop="30dp"
+                        android:textColor="#000"
+                        android:layout_marginLeft="50dp"
+                        android:textStyle="bold"
+                        android:textSize="40sp"/>
+                    <TextView
+                        android:id="@+id/units3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Units Consumed :"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#000"
+
+                        android:textSize="30sp"/>
+                    <TextView
+                        android:id="@+id/amount3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Payable Amount :"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textColor="#000"
+
+                        android:textSize="30sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="end"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/water_heater_eco"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+
+
+
+                        android:layout_marginLeft="35dp"
+                        android:src="@drawable/ecologo"
+                        android:layout_marginTop="1dp"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ECO MODE"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Use this mode to\nreduce energy\nconsumption"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="italic"
+                        android:layout_marginTop="20dp"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+    </LinearLayout>
+    </ScrollView>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
